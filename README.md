@@ -38,7 +38,7 @@ Inicie o servidor
 node app.js
 ```
 
-Acesse o projeto em http://localhost:3000
+Acesse o projeto em localhost:3000
 
 
 
