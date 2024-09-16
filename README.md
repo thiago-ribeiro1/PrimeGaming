@@ -2,7 +2,7 @@
 
 ![Prime Gaming](https://github.com/user-attachments/assets/183d3e23-e136-4e17-9481-60fa42fb10a7)
 
-O **PrimeGaming** é uma plataforma de administração para uma loja digital de eletrônicos, onde administradores (users) podem cadastrar, atualizar e remover produtos, novos clientes e usuários, e ao fazer login esses clientes podem visualizar e comprar itens com descontos personalizados.<br>
+O **PrimeGaming** é uma plataforma de administração para uma loja digital de eletrônicos, onde administradores (users) podem cadastrar, atualizar e remover produtos, novos clientes e usuários, clientes cadastrados ao fazer login podem visualizar e comprar itens com descontos personalizados.<br>
 
 ## 🚧 Status do Projeto
 
