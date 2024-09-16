@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PrimeGaming | Login</title>
+  <meta content="PrimeGaming - Loja de Acessórios para Gamers" name="description">
+  <meta name="keywords"
+    content="games, gaming, store, comprar jogos, jogos, ps4, ps5, pc, PlayStation, Steam, mouse gamer, teclado gamer, headset">
+  <meta property="og:image" content="https://primegaming.duplimagemled.com.br/src/img/pexels-cottonbro-3945656.jpg">
+
+  <!-- Favicons -->
+  <link href="src/img/logo.png" rel="icon">
+  <link href="src/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="src/css/bootstrap.min.css" rel="stylesheet">
+  <link href="src/css/style.css" rel="stylesheet">
+  <link href="src/css/newlogin.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container" id="container">
+
+    <!-- Sign Up Form -->
+    <div class="form-container sign-up">
+      <form class="row g-3 needs-validation" id="signupForm" novalidate>
+        <h1>Crie sua Conta</h1>
+
+        <label for="yourName" class="form-label"></label>
+        <input type="text" name="name" class="form-control" id="yourName" placeholder="Nome" required>
+
+        <label for="yourEmail" class="form-label"></label>
+        <input type="email" name="email" class="form-control" id="yourEmail" placeholder="Email" required>
+
+        <label for="yourUsername" class="form-label"></label>
+        <input type="text" name="username" class="form-control" id="yourUsername" placeholder="Usuário" required>
+
+        <label for="yourPassword" class="form-label"></label>
+        <input type="password" name="password" class="form-control" id="yourPassword" placeholder="Senha" required>
+
+        <button class="btn btn-primary w-100" type="submit">Criar Conta</button>
+      </form>
+    </div>
+
+    <!-- Login Form -->
+    <div class="form-container sign-in">
+      <form class="row g-3 needs-validation" id="loginForm" novalidate>
+        <h2 class="card-title text-center pb-0 fs-4">Entre na sua Conta</h2>
+        <span class="text-center small">Insira seu usuário e senha</span>
+
+        <label for="loginUsername" class="form-label"></label>
+        <input type="text" name="username" class="form-control" id="loginUsername" placeholder="Usuário" required>
+
+        <label for="yourPassword" class="form-label"></label>
+        <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Senha" required>
+
+        <!-- Checkboxes e Data de Cadastro -->
+        <div class="checkbox-row">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="userTypeUser" value="User">
+            <label class="form-check-label" for="userTypeUser">User (Adm)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="userTypeClient" value="Client">
+            <label class="form-check-label" for="userTypeClient">Cliente</label>
+          </div>
+          <div class="date-container" id="dataCadastro" style="display:none;">
+            <label for="cadastroDate" class="form-label">Data de Cadastro:</label>
+            <input type="date" name="cadastroDate" class="form-control" id="cadastroDate">
+          </div>
+        </div>
+
+        <button onclick="updateHomePage(user)" class="btn btn-primary w-100" type="submit">Entrar</button>
+      </form>
+    </div>
+
+
+    <!-- Toggle Between Sign In and Sign Up -->
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Já tem uma Conta?</h1>
+          <button class="hidden" id="login">Fazer Login</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Não tem uma Conta?</h1>
+          <button class="hidden" id="register">Cadastre-se</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Exibir campo de data de cadastro para clientes apenas quando o checkbox cliente é clicado
+    document.getElementById('userTypeClient').addEventListener('change', function () {
+      document.getElementById('dataCadastro').style.display = this.checked ? 'flex' : 'none';
+    });
+
+    // Ocultar o campo de data de cadastro e desmarcar o checkbox cliente se o checkbox usuário for clicado
+    document.getElementById('userTypeUser').addEventListener('change', function () {
+      if (this.checked) {
+        document.getElementById('dataCadastro').style.display = 'none';
+        document.getElementById('userTypeClient').checked = false;
+      }
+    });
+  </script>
+
+
+  <!-- Modal Bootstrap -->
+  <section id="modalBootstrap">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">PrimeGaming</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="modal-message">Mensagem padrão</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- JS -->
+  <script src="src/js/bootstrap.bundle.min.js"></script>
+  <script src="src/js/main.js"></script>
+  <script src="src/js/newLogin.js"></script>
+  <script src="src/js/login.js"></script>
+  <script src="src/js/signUp.js"></script>
+  <script src="src/js/updateProfile.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

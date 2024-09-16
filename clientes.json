@@ -1,0 +1,16 @@
+[
+  {
+    "id": "001",
+    "name": "Daniel Abella",
+    "cpf": "564.875.645-16",
+    "age": 35,
+    "createdAt": "2020-05-22"
+  },
+  {
+    "id": "002",
+    "name": "Diogo Diniz",
+    "cpf": "145.785.568-15",
+    "age": 20,
+    "createdAt": "2024-08-27"
+  }
+]

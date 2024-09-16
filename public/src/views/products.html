@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>PrimeGaming</title>
+    <meta content="PrimeGaming - Loja de Acessórios para Gamers" name="description">
+    <meta name="keywords"
+        content="games, gaming, store, comprar jogos, jogos, ps4, ps5, pc, PlayStation, Steam, mouse gamer, teclado gamer, headset">
+    <meta property="og:image" content="https://primegaming.duplimagemled.com.br/src/img/pexels-cottonbro-3945656.jpg">
+
+    <!-- Favicons -->
+    <link href="../img/logo.png" rel="icon">
+    <link href="../img/logo.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- CSS  -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="#" class="logo d-flex align-items-center">
+                <img src="../img/logo.png" alt="logo Prime Gaming">
+                <span class="d-none d-lg-block">PrimeGaming</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- Fim div Logo -->
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item dropdown">
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="../img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2" id="userNameLogin">
+                            <!-- Conteúdo nome de usuário será adicionado aqui --> </span>
+                    </a>
+
+                    <!-- Perfil Nav -->
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="../views/users-profile.html">
+                                <i class="bi bi-person"></i>
+                                <span>Perfil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="../../index.html">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sair</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- Fim Perfil Nav -->
+            </ul>
+        </nav>
+    </header><!-- Fim Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link " href="../views/products.html">
+                    <i class="bi bi-grid"></i>
+                    <span>Página Inicial</span>
+                </a>
+            </li><!-- Fim HomePage Nav -->
+
+            <!-- Perfil -->
+            <li class="nav-heading">Perfil</li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="../views/users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>Meu Perfil</span>
+                </a>
+            </li>
+        </ul>
+    </aside><!-- Fim Sidebar-->
+
+    <main id="main" class="main">
+
+        <!-- Página Bem Vindo -->
+        <div class="pagetitle">
+            <h1 id="welcome">Bem vindo(a)</h1> <!-- Será adicionado o nome do usuário após o "Bem Vindo" pelo js -->
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../views/products.html">Home</a></li>
+                    <li class="breadcrumb-item active">Página Inicial</li>
+                </ol>
+            </nav>
+        </div><!-- Fim Página Bem Vindo -->
+
+        <section class="section dashboard">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+
+
+                        <!-- Produtos -->
+                        <div class="col-12">
+                            <div class="card top-selling overflow-auto">
+                                <div class="card-body pb-0">
+                                    <h5 class="card-title">Produtos</h5>
+
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Preview</th>
+                                                <th scope="col">Produto</th>
+                                                <th scope="col">Preço Atual</th>
+                                                <th scope="col">Preço Em Promoção</th>
+                                                <th scope="col">Tipo</th>
+                                                <th scope="col">Descrição</th>
+                                                <th scope="col">Comprar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Produtos pré-cadastrados -->
+                                            <tr>
+                                                <th scope="row"><a><img src="../img/product-1.jpg" alt=""></a></th>
+                                                <td><a class="text-primary fw-bold">Mouse Gamer Redragon Cobra</a></td>
+                                                <td>R$150,00</td>
+                                                <td class="fw-bold">R$112,50</td>
+                                                <td>Acessório para computador</td>
+                                                <td>Mouse Gamer Redragon</td>
+                                                <td><button>Produto Indisponível</button></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><a><img src="../img/product-1.jpg" alt=""></a></th>
+                                                <td><a class="text-primary fw-bold">Teclado Gamer Acer Nitro</a></td>
+                                                <td>R$263,12</td>
+                                                <td class="fw-bold">R$197,34</td>
+                                                <td>Acessório para computador</td>
+                                                <td>Teclado Gamer</td>
+                                                <td><button>Produto Indisponível</button></td>
+                                            </tr>
+                                            <!-- Os produtos serão adicionados aqui pelo JS após cadastro no form -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!-- Fim Produtos -->
+
+    </main><!-- Fim #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>PrimeGaming</span></strong>. Todos os direitos reservados
+        </div>
+        <div class="credits">
+            <p>Desenvolvido por Alexsandra Luna | Bruna Rafaela | Diogo Spínola | João Vitor | Keven Max | Thiago
+                Ribeiro</p>
+        </div>
+    </footer><!-- Fim do Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Modal Bootstrap -->
+    <section id="modalBootstrap">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">PrimeGaming</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modal-message">Mensagem padrão</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- JS -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/updateProfile.js" defer></script>
+    <script src="../js/cadastrarProduto.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>

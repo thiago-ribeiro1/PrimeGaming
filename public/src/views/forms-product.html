@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Cadastrar Produtos</title>
+  <meta content="PrimeGaming - Loja de Acessórios para Gamers" name="description">
+  <meta name="keywords"
+    content="games, gaming, store, comprar jogos, jogos, ps4, ps5, pc, PlayStation, Steam, mouse gamer, teclado gamer, headset">
+  <meta property="og:image" content="https://primegaming.duplimagemled.com.br/src/img/pexels-cottonbro-3945656.jpg">
+
+  <!-- Favicons -->
+  <link href="../img/logo.png" rel="icon">
+  <link href="../img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- CSS  -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="../views/home-page.html" class="logo d-flex align-items-center">
+        <img src="../img/logo.png" alt="Ícone Logo">
+        <span class="d-none d-lg-block">PrimeGaming</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- Fim Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown">
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="../img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">User</span>
+          </a><!-- Fim Profile Image Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Opções</h6>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="../views/users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>Perfil</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="../../index.html">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sair</span>
+              </a>
+            </li>
+          </ul><!-- Fim Profile Dropdown Itens -->
+        </li><!-- Fim Profile Nav -->
+      </ul>
+    </nav><!-- Fim Icons Navigation -->
+  </header><!-- Fim Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="../views/home-page.html">
+          <i class="bi bi-grid"></i>
+          <span>Página Inicial</span>
+        </a>
+      </li><!-- Fim Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Cadastrar</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="../views/forms-product.html">
+              <i class="bi bi-circle"></i><span>Cadastrar Produtos</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/forms-customers.html">
+              <i class="bi bi-circle"></i><span>Cadastrar Clientes</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/forms-users.html">
+              <i class="bi bi-circle"></i><span>Cadastrar Usuários</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- Fim Cadastrar -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Clientes</span><i
+            class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="../views/customers.html">
+              <i class="bi bi-circle"></i><span>Lista Clientes</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- Fim Tables Nav -->
+
+      <!-- Aba Usuários Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Usuários</span><i
+            class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="../views/users.html">
+              <i class="bi bi-circle"></i><span>Lista Usuários</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- Fim Usuários -->
+
+      <li class="nav-heading">Perfil</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="../views/users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Meu Perfil</span>
+        </a>
+      </li>
+    </ul>
+
+  </aside><!-- Fim Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Cadastrar Produto</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../views/home-page.html">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Cadastrar Produto</li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Informações do Produto</h5>
+
+              <!-- Formulário para Cadastrar, Atualizar e Remover Produto -->
+              <form id="productForm">
+                <div class="row mb-3">
+                  <label for="productId" class="col-sm-2 col-form-label">Código Produto</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="productId" placeholder="Código do Produto" required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="productName" class="col-sm-2 col-form-label">Nome</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="productName" placeholder="Nome do Produto" required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="productPriceCurrent" class="col-sm-2 col-form-label">Preço Atual</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="productPriceCurrent" placeholder="Preço Atual"
+                      required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="productPricePromotion" class="col-sm-2 col-form-label">Preço em Promoção</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="productPricePromotion"
+                      placeholder="Preço em Promoção (-25%)" required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="productType" class="col-sm-2 col-form-label">Tipo</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="productType" placeholder="Tipo de Produto" required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="productDescription" class="col-sm-2 col-form-label">Descrição</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" id="productDescription" placeholder="Descrição do Produto"
+                      style="height: 100px" required></textarea>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="productCreatedAt" class="col-sm-2 col-form-label">Data de Criação</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="productCreatedAt" required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="productUpdatedAt" class="col-sm-2 col-form-label">Data de Atualização</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="productUpdatedAt">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-sm-10 offset-sm-2">
+                    <button type="button" id="cadastrarBtn" class="btn btn-primary">Cadastrar Produto</button>
+                    <button type="button" id="atualizarBtn" class="btn btn-secondary">Atualizar Produto</button>
+                    <button type="button" id="removerBtn" class="btn btn-danger">Remover Produto</button>
+                  </div>
+                </div>
+              </form><!-- Fim Formulário -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- Fim main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>PrimeGaming</span></strong>. Todos os direitos reservados
+    </div>
+    <div class="credits">
+      <p>Desenvolvido por Alexsandra Luna | Bruna Rafaela | Diogo Spínola | João Vitor | Keven Max | Thiago Ribeiro</p>
+    </div>
+  </footer><!-- Fim do Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Modal Bootstrap -->
+  <section id="modalBootstrap">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">PrimeGaming</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="modal-message">Mensagem padrão</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Main JS -->
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/cadastrarProduto.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
