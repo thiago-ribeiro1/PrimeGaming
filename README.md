@@ -4,6 +4,10 @@
 
 O **PrimeGaming** é uma plataforma de administração para uma loja digital de eletrônicos, onde administradores (users) podem cadastrar, atualizar e remover produtos, enquanto clientes podem visualizar e comprar itens com descontos personalizados.
 
+## 🚧 Status do Projeto
+
+> **Aviso:** Este projeto está atualmente em desenvolvimento. Algumas funcionalidades podem estar sujeitas a mudanças.
+
 ## 🚀 Tecnologias Utilizadas
 
 - Node.js
