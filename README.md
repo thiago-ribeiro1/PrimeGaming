@@ -16,6 +16,7 @@ O **PrimeGaming** é uma plataforma de administração para uma loja digital de 
 - JavaScript
 - HTML5 / CSS3
 <br>
+
 ## 📥 Rodando localmente
 
 Clone o projeto
