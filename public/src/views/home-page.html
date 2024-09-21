@@ -329,26 +329,31 @@
 
           <script>
             // Adicionar atividades recentes com interação do usuário
-            function atualizarAtividadesRecentes() {
-              // Recuperar a lista de atividades do localStorage
-              const atividades = JSON.parse(localStorage.getItem('atividades')) || [];
-              const atividadeContainer = document.querySelector('.activity');
+            async function atualizarAtividadesRecentes() {
+              try {
+                // Recuperar a lista de atividades do Redis
+                const response = await fetch('/api/atividades');
+                if (!response.ok) {
+                  throw new Error('Erro ao buscar atividades do servidor');
+                }
+                const atividades = await response.json();
+                const atividadeContainer = document.querySelector('.activity');
 
-              // // Limpar atividades antigas
-              // atividadeContainer.innerHTML = '';
-
-              // Adicionar atividades recentes
-              atividades.forEach(novaAtividade => {
-                const atividadesItem = document.createElement('div');
-                atividadesItem.className = 'activity-item d-flex';
-                atividadesItem.innerHTML = `
-                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                        <div class='activity-content'>
-                            ${novaAtividade}
-                        </div>
-                    `;
-                atividadeContainer.appendChild(atividadesItem);
-              });
+                // Adicionar atividades recentes
+                atividades.forEach(novaAtividade => {
+                  const atividadesItem = document.createElement('div');
+                  atividadesItem.className = 'activity-item d-flex';
+                  atividadesItem.innerHTML = `
+                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                    <div class='activity-content'>
+                      ${novaAtividade}
+                    </div>
+                  `;
+                  atividadeContainer.appendChild(atividadesItem);
+                });
+              } catch (error) {
+                console.error('Erro:', error);
+              }
             }
 
             // Chamar a função para atualizar as atividades ao carregar a página

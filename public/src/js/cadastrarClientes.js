@@ -104,14 +104,28 @@ function updateTable() {
         .then(clients => {
             clients.forEach((client, index) => {
                 const row = document.createElement('tr');
+
+                // Função para formatar a data
+                const formatDate = (dateString) => {
+                    const date = new Date(dateString);
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const month = String(date.getMonth() + 1).padStart(2, '0'); // Mês começa em 0
+                    const year = date.getFullYear();
+                    return `${day}-${month}-${year}`;
+                };
+
+                // Formatando a data criada (createdAt)
+                const formatarDataCreatedAt = formatDate(client.createdAt);
+
                 row.innerHTML = `
                     <th scope="row">${index + 3}</th>
                     <td>${client.name}</td>
                     <td>${client.cpf}</td> 
                     <td>${client.age}</td>
-                    <td>${client.createdAt}</td>
+                    <td>${formatarDataCreatedAt}</td> <!-- Data formatada -->
                 `;
                 tableBody.appendChild(row);
             });
         });
 }
+

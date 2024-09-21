@@ -72,10 +72,19 @@ async function botaoComprarCliente(productName) {
 
       msgAtividadesRecentes = `${usuarioLogado.name} comprou ${product.name}`;
 
-      // Adicionar a mensagem de atividade na home-page.html
-      const atividades = JSON.parse(localStorage.getItem("atividades")) || [];
-      atividades.unshift(msgAtividadesRecentes); // Adiciona a nova atividade no início da lista
-      localStorage.setItem("atividades", JSON.stringify(atividades));
+      // Adicionar a mensagem de atividade ao Redis
+      fetch('/api/atividades', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ msgAtividadesRecentes }),
+      })
+      .then(response => response.json())
+      .then(data => console.log('Atividade salva:', data))
+      .catch(error => console.error('Erro ao salvar atividade:', error));
+
+
     } else {
       showModal("Produto não encontrado ou usuário não encontrado");
     }

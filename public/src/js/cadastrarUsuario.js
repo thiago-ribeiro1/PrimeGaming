@@ -5,7 +5,7 @@ function handleUserAction(action) {
     const userCpf = document.getElementById(`${action}UserCpf`)?.value || '';
 
     const userData = {
-        id: userId,
+        userId: userId,
         name: userName,
         cpf: userCpf
     };
@@ -51,7 +51,7 @@ function updateUserTable() {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <th scope="row">${index + 1}</th>
-                <td>${user.id}</td>
+                <td>${user.userId}</td>
                 <td>${user.name}</td>
                 <td>${user.cpf}</td>
             `;
