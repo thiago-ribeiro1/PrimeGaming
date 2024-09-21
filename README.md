@@ -17,7 +17,7 @@ O **PrimeGaming** é uma plataforma de administração para uma loja digital de 
 - JavaScript
 - HTML5 / CSS3
 
-## É necessário iniciar uma conexão com o servidor Mongo e Redis
+## É necessário iniciar uma conexão com o servidor MongoDB Compass e Redis
 
 ## 📥 Rodando localmente
 
