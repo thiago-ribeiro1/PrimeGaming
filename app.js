@@ -4,8 +4,13 @@ const cors = require('cors');
 require('dotenv').config(); // importando dotenv
 const loginController = require('./public/src/controllers/loginController');
 const redis = require('redis');
+
+
 const client = redis.createClient({
-  url: 'redis://localhost:6379', // Porta conexão com redis db
+  url: 'redis://localhost:6379', // Porta de conexão com Redis
+  socket: {
+    reconnectStrategy: false // Impede o loop de reconexão em caso de falha na primeira tentativa
+  }
 });
 
 
@@ -73,16 +78,16 @@ app.listen(PORT, () => {
     console.log(`Aplicação está sendo executada na porta ${PORT}`);
 });
 
+// Conectar ao Redis
 client.connect()
   .then(() => {
     console.log('Conectado ao Redis');
   })
   .catch(err => {
-    console.error('Erro ao conectar ao Redis:', err);
+    console.error('Redis não conectado', err.message);
   });
 
+// Escutar erros no cliente Redis
 client.on('error', (err) => {
   console.error('Erro no cliente Redis:', err);
 });
-
-
