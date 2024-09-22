@@ -21,9 +21,9 @@ O **PrimeGaming** é uma plataforma de administração para uma loja digital de 
 
 - **MongoDB**: Certifique-se de que o servidor MongoDB esteja instalado e em execução. O [MongoDB Compass](https://www.mongodb.com/try/download/compass) pode ser utilizado para gerenciar visualmente os dados.
   
- Você pode baixar o servidor MongoDB [clicando aqui](https://www.mongodb.com/try/download/community).
+ Você pode baixar o servidor MongoDB [clicando aqui](https://www.mongodb.com/try/download/community)
 
-- **Redis**: O servidor Redis também precisa estar em execução antes de rodar o projeto. Você pode instalar o Redis e iniciar o serviço seguindo as instruções da [documentação oficial](https://redis.io/docs/getting-started/installation/).
+- **Redis**: O servidor Redis também precisa estar em execução antes de rodar o projeto. Você pode instalar o Redis e iniciar o serviço seguindo as instruções da [documentação oficial](https://redis.io/docs/getting-started/installation/)
 
 ## 📥 Rodando localmente
 
