@@ -25,7 +25,7 @@ exports.addClient = async (req, res) => {
 
         res.json({ message: 'Cliente cadastrado com sucesso!' });
     } catch (error) {
-        res.status(500).json({ message: 'Erro | CPF já existe!' }); // 500 Internal Server Error | Servidor não conseguiu processar a solicitação devido a uma falha inesperada
+        res.status(500).json({ message: 'Erro | CPF já está registrado na base de dados!' }); // 500 Internal Server Error | Servidor não conseguiu processar a solicitação devido a uma falha inesperada
     }
 };
 

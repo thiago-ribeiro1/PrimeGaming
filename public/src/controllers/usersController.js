@@ -26,7 +26,7 @@ exports.addUser = async (req, res) => {
         res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Erro ao cadastrar usuário' });
+        res.status(500).json({ message: 'Erro | CPF já está registrado na base de dados!' });
     }
 };
 
