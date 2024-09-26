@@ -25,35 +25,33 @@ exports.addProduct = async (req, res) => {
     }
 };
 
-// Atualiza um produto existente
+// Atualiza um produto pelo codProd
 exports.updateProduct = async (req, res) => {
-    const productId = req.params.id;
-    const updatedProduct = req.body;
+    const { codProd } = req.params;
+    const updatedData = req.body;
 
     try {
-        // Usando MongoDB para atualizar um produto existente
-        const product = await Product.findByIdAndUpdate(productId, updatedProduct, { new: true });
+        const product = await Product.findOneAndUpdate({ codProd }, updatedData, { new: true });
         if (!product) {
-            return res.status(404).json({ message: 'Produto não encontrado' }); // 404 Not Found | O servidor não pode encontrar o recurso solicitado
+            return res.status(404).json({ message: 'Produto não encontrado!' });
         }
-        res.json({ message: 'Produto atualizado com sucesso!' });
+        res.status(200).json({ message: 'Produto atualizado com sucesso!', product });
     } catch (error) {
-        res.status(500).json({ message: 'Produto não encontrado' }); // 500 Internal Server Error | Servidor não conseguiu processar a solicitação devido a uma falha inesperada
+        res.status(500).json({ message: 'Erro ao atualizar o produto', error });
     }
 };
 
-// Remove um produto
+// Remove um produto pelo codProd
 exports.deleteProduct = async (req, res) => {
-    const productId = req.params.id;
+    const { codProd } = req.params;
 
     try {
-        // Usando MongoDB para remover um produto
-        const result = await Product.findByIdAndDelete(productId);
-        if (!result) {
-            return res.status(404).json({ message: 'Produto não encontrado' }); // 404 Not Found | O servidor não pode encontrar o recurso solicitado
+        const product = await Product.findOneAndDelete({ codProd });
+        if (!product) {
+            return res.status(404).json({ message: 'Produto não encontrado!' });
         }
-        res.json({ message: 'Produto removido com sucesso!' });
+        res.status(200).json({ message: 'Produto removido com sucesso!' });
     } catch (error) {
-        res.status(500).json({ message: 'Produto não encontrado' }); // 500 Internal Server Error | Servidor não conseguiu processar a solicitação devido a uma falha inesperada
+        res.status(500).json({ message: 'Erro ao remover o produto', error });
     }
 };

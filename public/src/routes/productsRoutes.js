@@ -8,10 +8,10 @@ router.get('/', productsController.getProducts);
 // Rota para adicionar um novo produto
 router.post('/', productsController.addProduct);
 
-// Rota para atualizar um produto existente
-router.put('/:id', productsController.updateProduct);
+// Rota para atualizar um produto existente 
+router.put('/:codProd', productsController.updateProduct);
 
-// Rota para remover um produto
-router.delete('/:id', productsController.deleteProduct);
+// Rota para remover um produto 
+router.delete('/:codProd', productsController.deleteProduct);
 
 module.exports = router;

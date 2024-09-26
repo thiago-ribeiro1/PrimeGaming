@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
 const ProductSchema = new mongoose.Schema({
-    codProd: String,
-    name: String,
-    price_current: Number,
-    price_promotion: Number,
-    type: String,
-    description: String,
-    created_at: Date,
-    updated_at: Date
+    codProd: { type: String, required: true, unique: true },
+    name: {type: String, required: true },
+    price_current: { type: Number, required: true},
+    price_promotion: { type: Number, required: true },
+    type: {type: String, required: true },
+    description: {type: String, required: true },
+    created_at: {type: Date },
+    updated_at: {type: Date }
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

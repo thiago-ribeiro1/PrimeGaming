@@ -69,10 +69,13 @@ function atualizarProduto() {
         price_promotion: document.getElementById('productPricePromotion').value,
         type: document.getElementById('productType').value,
         description: document.getElementById('productDescription').value,
-        updated_at: document.getElementById('productUpdatedAt').value
+        updated_at: new Date() // Atualiza a data automaticamente
     };
 
-    fetch(`/api/products/${document.getElementById('productId').value}`, {
+    // Use codProd em vez de _id
+    const codProd = document.getElementById('productId').value;
+
+    fetch(`/api/products/${codProd}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -87,9 +90,13 @@ function atualizarProduto() {
     .catch(error => console.error('Erro ao atualizar produto:', error));
 }
 
+
 // Função para remover um produto
 function removerProduto() {
-    fetch(`/api/products/${document.getElementById('productId').value}`, {
+    // Use codProd em vez de _id
+    const codProd = document.getElementById('productId').value;
+
+    fetch(`/api/products/${codProd}`, {
         method: 'DELETE'
     })
     .then(response => response.json())
@@ -99,6 +106,7 @@ function removerProduto() {
     })
     .catch(error => console.error('Erro ao remover produto:', error));
 }
+
 
 // Função principal para decidir qual ação tomar com base no botão clicado
 function handleFormAction(action) {

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config(); // importando dotenv
 const loginController = require('./public/src/controllers/loginController');
+const photoProfileController = require('./public/src/controllers/photoProfileController');
 const redis = require('redis');
 
 
@@ -16,6 +17,9 @@ const client = redis.createClient({
 
 // Inicializa o aplicativo Express
 const app = express();
+
+app.use(express.json({ limit: '10mb' })); // Ajuste o limite de tamanho da imagem
+
 
 app.use(cors());
 app.use(express.json());
@@ -31,14 +35,19 @@ db.once('open', () => {
     console.log('Conectado ao MongoDB');
 });
 
-
+// rotas login signup
 app.post('/signup', loginController.signup);
 app.post('/login', loginController.login);
+
+// Rota para atualizar a imagem de perfil
+app.post('/api/users/updateProfileImage', photoProfileController.updateProfileImage);
+
 
 // Importando as rotas
 const clientsRoutes = require('./public/src/routes/clientsRoutes');
 const productsRoutes = require('./public/src/routes/productsRoutes');
 const usersRoutes = require('./public/src/routes/usersRoutes');
+
 
 // Endpoints
 app.use('/api/clients', clientsRoutes);

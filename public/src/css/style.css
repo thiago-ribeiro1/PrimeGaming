@@ -1005,3 +1005,21 @@ h6 {
 #receita {
   margin-left: -16px;
 }
+
+/* Foto perfil */
+.uploadPhoto-container {
+  display: flex;               /* Usando flexbox */
+  align-items: center;        /* Alinha verticalmente os itens ao centro */
+  gap: 10px;                  /* Espaçamento entre os itens */
+}
+
+.file-input {
+  display: inline-block;       /* Para garantir que o botão de arquivo apareça corretamente */
+}
+
+.upload-button {
+  background-color: #2806e9; /* Cor de fundo */
+  color: white;               /* Cor do texto */
+  cursor: pointer;            /* Cursor de ponteiro ao passar o mouse */
+  
+}

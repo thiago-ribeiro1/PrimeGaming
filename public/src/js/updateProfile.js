@@ -94,9 +94,19 @@ async function botaoComprarCliente(productName) {
   }
 }
 
-// Função para atualizar a interface da página de perfil
+// Função para atualizar a interface da página de perfil e a imagem de perfil 
 function updateUserProfile(user) {
-  // Selecionar os elementos onde os dados serão exibidos
+  // Atualizar a imagem de perfil na navbar
+  const profileImageElements = document.querySelectorAll(".nav-profile img");
+  
+  // Atualiza a imagem de perfil em todas as instâncias na navegação
+  profileImageElements.forEach((imgElement) => {
+      imgElement.src = user.profileImage || '../img/profile-img.jpg'; // Usar uma imagem padrão se não houver
+  });
+
+  
+
+  // Atualizar a interface da página de perfil
   const profileNameElement = document.getElementById("profileName");
   const fullNameElement = document.getElementById("fullName");
   const emailElement = document.getElementById("email");
@@ -104,15 +114,17 @@ function updateUserProfile(user) {
 
   // Atualizar o HTML da interface
   profileNameElement.innerHTML = `
-        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            <img src="../img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <h2>${user.name}</h2>
-        </div>
-    `;
+      <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+          <img src="${user.profileImage || '../img/profile-img.jpg'}" alt="Profile" class="rounded-circle">
+          <h2>${user.name}</h2>
+      </div>
+  `;
   fullNameElement.textContent = user.name;
   emailElement.textContent = user.email;
   usernameElement.textContent = user.username;
 }
+
+
 
 // Atualizar a interface ao carregar a página
 window.addEventListener("DOMContentLoaded", () => {
@@ -126,12 +138,78 @@ window.addEventListener("DOMContentLoaded", () => {
     return; // Saímos da função
   }
 
-  // Atualizar a interface dependendo da página
-  if (path.endsWith("src/views/home-page.html")) {
+  // Padronizando o caminho removendo barras ou caracteres indesejados
+const normalizedPath = path.toLowerCase().replace(/\\/g, '/');
+
+// Atualizar a interface das páginas
+if (normalizedPath.endsWith("src/views/home-page.html")) {
     updateHomePage(usuarioLogado);
-  } else if (path.endsWith("src/views/users-profile.html")) {
     updateUserProfile(usuarioLogado);
-  } else if (path.endsWith("src/views/products.html")) {
+}
+
+if (normalizedPath.endsWith("src/views/users-profile.html")) {
+    updateUserProfile(usuarioLogado);
     updateHomePage(usuarioLogado);
+}
+
+if (normalizedPath.endsWith("src/views/products.html")) {
+    updateHomePage(usuarioLogado);
+    updateUserProfile(usuarioLogado);
+}
+
+});
+
+
+// Manipular imagem de perfil do html
+document.getElementById("uploadImageButton").addEventListener("click", async () => {
+  const fileInput = document.getElementById("profileImage"); // Obtém o elemento de input do arquivo onde o usuário seleciona a imagem
+  const file = fileInput.files[0];
+  
+  if (file) { // se houver alguma imagem arquivo
+    const reader = new FileReader();
+    reader.onloadend = async () => {
+      const base64String = reader.result; // String Base64 da imagem
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+      
+      // Atualizar a imagem do perfil no MongoDB
+      await fetch('/api/users/updateProfileImage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: usuarioLogado._id, // Assumindo que o ID do usuário está armazenado
+          image: base64String // Imagem como string Base64
+        }),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Erro ao atualizar a imagem"); // Lança um erro se a resposta não for OK
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Imagem do perfil atualizada:', data);
+        
+        // Atualizar o localStorage com a nova imagem
+        usuarioLogado.profileImage = base64String; // Atualiza a imagem no objeto do usuário
+        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado)); // Salva no localStorage
+        
+        // Atualizar a interface se necessário
+        updateUserProfile({ ...usuarioLogado, profileImage: base64String });
+      })
+      .catch(error => console.error('Erro ao atualizar imagem:', error));
+    };
+    reader.readAsDataURL(file); // Converte a imagem para Base64
+  } else {
+    console.log("Nenhuma imagem selecionada");
+  }
+});
+
+// Atualiza a imagem de perfil ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+  const user = JSON.parse(localStorage.getItem('currentUser')); // Obtém o usuário do localStorage
+  if (user) {
+      updateUserProfile(user); // Chama a função para atualizar a interface e a imagem
   }
 });
