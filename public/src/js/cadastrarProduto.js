@@ -9,7 +9,6 @@ function loadProducts() {
         .then(response => response.json())
         .then(products => {
             const tableBody = document.querySelector('table tbody');
-            // tableBody.innerHTML = ''; // Limpa o corpo da tabela
 
             products.forEach(product => {
                 const row = document.createElement('tr');
@@ -18,7 +17,7 @@ function loadProducts() {
                 const isProductsPage = window.location.pathname.includes('products.html');
                 
                 row.innerHTML = `
-                    <th scope="row"><a><img src="../img/product-1.jpg" alt="Produto Imagem"></a></th>
+                    <th scope="row"><a><img src="${product.image}" alt="Produto Imagem" style="width: 50px; height: 50px;"></a></th>
                     <td><a href="#" class="text-primary fw-bold">${product.name}</a></td>
                     <td>R$${product.price_current}</td>
                     <td class="fw-bold">R$${product.price_promotion}</td>
@@ -35,6 +34,8 @@ function loadProducts() {
 
 // Função para cadastrar um produto
 function cadastrarProduto() {
+    const productImage = document.getElementById('productImage').value.trim();
+
     const product = {
         codProd: document.getElementById('productId').value,
         name: document.getElementById('productName').value,
@@ -43,8 +44,11 @@ function cadastrarProduto() {
         type: document.getElementById('productType').value,
         description: document.getElementById('productDescription').value,
         created_at: document.getElementById('productCreatedAt').value,
-        updated_at: document.getElementById('productUpdatedAt').value
+        updated_at: document.getElementById('productUpdatedAt').value,
+        image: productImage.length > 0 ? productImage : '../img/product-1.jpg' // Define a imagem padrão se o usuário não inserir url da imagem
     };
+
+
 
     fetch('/api/products', {
         method: 'POST',
@@ -61,6 +65,7 @@ function cadastrarProduto() {
     .catch(error => console.error('Erro ao cadastrar produto:', error));
 }
 
+
 // Função para atualizar um produto existente
 function atualizarProduto() {
     const product = {
@@ -72,7 +77,6 @@ function atualizarProduto() {
         updated_at: new Date() // Atualiza a data automaticamente
     };
 
-    // Use codProd em vez de _id
     const codProd = document.getElementById('productId').value;
 
     fetch(`/api/products/${codProd}`, {
@@ -90,11 +94,9 @@ function atualizarProduto() {
     .catch(error => console.error('Erro ao atualizar produto:', error));
 }
 
-
 // Função para remover um produto
 function removerProduto() {
-    // Use codProd em vez de _id
-    const codProd = document.getElementById('productId').value;
+    const codProd = document.getElementById('removerProductId').value; // Usando o novo ID
 
     fetch(`/api/products/${codProd}`, {
         method: 'DELETE'
@@ -107,7 +109,6 @@ function removerProduto() {
     .catch(error => console.error('Erro ao remover produto:', error));
 }
 
-
 // Função principal para decidir qual ação tomar com base no botão clicado
 function handleFormAction(action) {
     if (action === 'cadastrar') {
@@ -118,7 +119,8 @@ function handleFormAction(action) {
         removerProduto();
     }
 
-    // document.getElementById('productForm').reset(); // Limpa o formulário
+    // Limpa o formulário após a ação
+    document.getElementById('productForm').reset();
 }
 
 // Adiciona os ouvintes de eventos para os botões do formulário
