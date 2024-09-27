@@ -21,6 +21,27 @@ function updateHomePage(user) {
   // Atualizar o conteúdo com os dados do usuário e desconto
   userNameLoginElement.textContent = user.name;
   bemVindoElement.textContent = `Bem-vindo(a) ${user.name} ${msgDesconto}`;
+
+  Toastify({
+    text: "Usuário Logado",
+    duration: 1300,
+    destination: "https://github.com/apvarun/toastify-js",
+    newWindow: true,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    offset: {
+      x: 0, // Distância da borda lateral (pode ajustar se quiser)
+      y: 46  // Distância do topo (ajuste este valor para abaixar mais o toast)
+    },
+    style: {
+      background: "linear-gradient(to right, #0073e6, #00c6ff)",
+    },
+    onClick: function(){} // Callback after click
+  }).showToast();
+
+  
 }
 
 async function botaoComprarCliente(productName) {
