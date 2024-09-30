@@ -211,7 +211,7 @@
                   <label for="productPricePromotion" class="col-sm-2 col-form-label">Preço em Promoção</label>
                   <div class="col-sm-10">
                     <input type="number" class="form-control" id="productPricePromotion"
-                      placeholder="Preço em Promoção (-25%)" required>
+                      placeholder="Preço em Promoção (-25%)">
                   </div>
                 </div>
 
@@ -276,6 +276,30 @@
                   </div>
                 </div>
               </form><!-- Fim Formulário Remover -->
+            </div>
+          </div>
+
+          <!-- Formulário para Aplicar Desconto -->
+          <div class="card mt-4">
+            <div class="card-body">
+              <h5 class="card-title">Aplicar Desconto</h5>
+
+              <form id="productFormDesconto">
+                <div class="row mb-3">
+                  <label for="descontoProdutoId" class="col-sm-2 col-form-label">Código Produto</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="descontoProdutoId" placeholder="Código do Produto"
+                      required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-sm-10 offset-sm-2">
+                    <button type="button" onclick="aplicarDesconto()" id="aplicarDescontoBtn"
+                      class="btn btn-primary">Aplicar Desconto</button>
+                  </div>
+                </div>
+              </form><!-- Fim Formulário Aplicar Desconto -->
             </div>
           </div>
         </div>

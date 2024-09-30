@@ -97,12 +97,12 @@ async function botaoComprarCliente(productName) {
       fetch('/api/atividades', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json', // corpo da mensagem será em JSON
         },
-        body: JSON.stringify({ msgAtividadesRecentes }),
+        body: JSON.stringify({ msgAtividadesRecentes }), // converte o objeto contendo a mensagem de atividades recentes em uma string JSON
       })
-      .then(response => response.json())
-      .then(data => console.log('Atividade salva:', data))
+      .then(response => response.json())  // Quando a resposta for recebida, convertê-la para JSON
+      .then(data => console.log('Atividade salva:', data)) // Exibir no console uma mensagem de sucesso 
       .catch(error => console.error('Erro ao salvar atividade:', error));
 
 

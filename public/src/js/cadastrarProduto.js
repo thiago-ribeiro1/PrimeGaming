@@ -135,3 +135,59 @@ document.getElementById('atualizarBtn').addEventListener('click', function() {
 document.getElementById('removerBtn').addEventListener('click', function() {
     handleFormAction('remover');
 });
+
+// Função para aplicar desconto produto
+function aplicarDesconto() {
+    const codProd = document.getElementById('descontoProdutoId').value.trim();
+
+    // Verifica se o código do produto foi inserido
+    if (!codProd) {
+        showModal('Insira o código do produto.');
+        return;
+    }
+
+    // Faz uma requisição para buscar o produto pelo código
+    fetch(`/api/products/${codProd}`)
+        .then(response => response.json())
+        .then(product => {
+            if (!product) {
+                showModal('Produto não encontrado.');
+                return;
+            }
+
+            // Calcula o preço com desconto (25%)
+            const precoAtual = parseFloat(product.price_current); // Converte o preço atual para float
+            const precoComDesconto = (precoAtual * 0.75).toFixed(2); // Calcula o desconto de 25%
+
+            
+            if (isNaN(precoAtual)) { // se preço atual is not a number
+                showModal('Preço atual inválido.');
+                return;
+            }
+
+            // Atualiza o campo de preço promocional do produto na tabela na home-page e products.html
+            product.price_promotion = parseFloat(precoComDesconto);
+
+            // Faz uma requisição PUT para atualizar o produto no banco de dados 
+            return fetch(`/api/products/${codProd}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(product)
+            });
+        })
+        .then(response => response.json())
+        .then(data => {
+            showModal('Desconto aplicado com sucesso!');
+            loadProducts(); // Atualiza a tabela de produtos
+        })
+        .catch(error => {
+            console.error('Erro ao aplicar o desconto:', error);
+            showModal('Erro ao aplicar o desconto.');
+        });
+}
+
+
+// Adiciona o ouvinte de eventos ao botão "Aplicar Desconto"
+document.getElementById('aplicarDescontoBtn').addEventListener('click', aplicarDesconto);

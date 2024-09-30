@@ -11,6 +11,45 @@ exports.getProducts = async (req, res) => {
     }
 };
 
+// Aplicar Desconto 
+exports.applyDiscount = async (req, res) => {
+    const { discountCode, productId } = req.body; // Recebendo o código do desconto e o ID do produto
+
+    try {   
+        const product = await Product.findById(productId); // Buscar o produto pelo ID
+        if (!product) {
+            return res.status(404).json({ message: 'Produto não encontrado!' });
+        }
+
+        // Lógica para aplicar um desconto EXEMPLO Máscara
+        if (discountCode === 'DESCONTO10') { // Código de desconto de exemplo
+            product.price_current *= 0.90; // Aplicar um desconto de 10%
+            await product.save(); // Salvar as alterações
+            return res.json({ message: 'Desconto aplicado com sucesso!', product });
+        } else {
+            return res.status(400).json({ message: 'Código de desconto inválido!' });
+        }
+
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao aplicar desconto', error });
+    }
+};
+
+// Obter um produto específico pelo codProd
+exports.getProductById = async (req, res) => {
+    const { codProd } = req.params;
+
+    try {
+        const product = await Product.findOne({ codProd });
+        if (!product) {
+            return res.status(404).json({ message: 'Produto não encontrado!' });
+        }
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao buscar produto' }); // 500 Internal Server Error
+    }
+};
+
 // Adiciona um novo produto
 exports.addProduct = async (req, res) => {
     const newProduct = req.body;
@@ -55,3 +94,4 @@ exports.deleteProduct = async (req, res) => {
         res.status(500).json({ message: 'Erro ao remover o produto', error });
     }
 };
+
