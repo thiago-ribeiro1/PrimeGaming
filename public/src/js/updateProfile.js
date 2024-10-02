@@ -32,8 +32,8 @@ function updateHomePage(user) {
     position: "right", // `left`, `center` or `right`
     stopOnFocus: true, // Prevents dismissing of toast on hover
     offset: {
-      x: 0, // Distância da borda lateral (pode ajustar se quiser)
-      y: 46  // Distância do topo (ajuste este valor para abaixar mais o toast)
+      x: 0, // Distância da borda lateral 
+      y: 46  // Distância do topo 
     },
     style: {
       background: "linear-gradient(to right, #0073e6, #00c6ff)",
