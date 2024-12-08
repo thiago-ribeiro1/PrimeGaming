@@ -1015,11 +1015,15 @@ h6 {
 
 .file-input {
   display: inline-block;       /* Para garantir que o botão de arquivo apareça corretamente */
+  width: 280px; /* Define a largura */
+  height: 42px; /* Define a altura */
+  font-size: 12px; /* Tamanho da fonte do texto */
 }
 
 .upload-button {
   background-color: #2806e9; /* Cor de fundo */
   color: white;               /* Cor do texto */
   cursor: pointer;            /* Cursor de ponteiro ao passar o mouse */
-  
+  margin-bottom: 20px;
 }
+
