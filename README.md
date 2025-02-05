@@ -28,13 +28,14 @@ O **PrimeGaming** é uma plataforma de administração para uma loja digital de 
 Clone o projeto
 
 ```bash
-git clone https://github.com/thiago-ribeiro1/PrimeGaming-2.0.git
+git clone https://github.com/thiago-ribeiro1/PrimeGaming.git
 ```
 
 Entre no diretório do projeto
 
 ```bash
-cd prime-gaming
+cd PrimeGaming
+
 ```
 
 Instale as dependências
