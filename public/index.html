@@ -1,14 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <title>PrimeGaming | Login</title>
-    <meta
-      content="PrimeGaming - Loja de Acessórios para Gamers"
-      name="description"
-    />
+    <meta content="PrimeGaming - Loja de Acessórios para Gamers" name="description" />
     <meta
       name="keywords"
       content="games, gaming, store, comprar jogos, jogos, ps4, ps5, pc, PlayStation, Steam, mouse gamer, teclado gamer, headset"
@@ -82,9 +79,7 @@
             required
           />
 
-          <button class="btn btn-primary w-100" type="submit">
-            Criar Conta
-          </button>
+          <button class="btn btn-primary w-100" type="submit">Criar Conta</button>
         </form>
       </div>
 
@@ -117,45 +112,20 @@
           <!-- Checkboxes e Data de Cadastro -->
           <div class="checkbox-row">
             <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="userTypeUser"
-                value="User"
-              />
-              <label class="form-check-label" for="userTypeUser"
-                >User (Adm)</label
-              >
+              <input class="form-check-input" type="checkbox" id="userTypeUser" value="User" />
+              <label class="form-check-label" for="userTypeUser">User (Adm)</label>
             </div>
             <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="userTypeClient"
-                value="Client"
-              />
-              <label class="form-check-label" for="userTypeClient"
-                >Cliente</label
-              >
+              <input class="form-check-input" type="checkbox" id="userTypeClient" value="Client" />
+              <label class="form-check-label" for="userTypeClient">Cliente</label>
             </div>
             <div class="date-container" id="dataCadastro" style="display: none">
-              <label for="cadastroDate" class="form-label"
-                >Insira sua data de cadastro:</label
-              >
-              <input
-                type="date"
-                name="cadastroDate"
-                class="form-control"
-                id="cadastroDate"
-              />
+              <label for="cadastroDate" class="form-label">Insira sua data de cadastro:</label>
+              <input type="date" name="cadastroDate" class="form-control" id="cadastroDate" />
             </div>
           </div>
 
-          <button
-            onclick="updateHomePage(user)"
-            class="btn btn-primary w-100"
-            type="submit"
-          >
+          <button onclick="updateHomePage(user)" class="btn btn-primary w-100" type="submit">
             Entrar
           </button>
         </form>
@@ -178,23 +148,17 @@
 
     <script>
       // Exibir campo de data de cadastro para clientes apenas quando o checkbox cliente é clicado
-      document
-        .getElementById("userTypeClient")
-        .addEventListener("change", function () {
-          document.getElementById("dataCadastro").style.display = this.checked
-            ? "flex"
-            : "none";
-        });
+      document.getElementById("userTypeClient").addEventListener("change", function () {
+        document.getElementById("dataCadastro").style.display = this.checked ? "flex" : "none";
+      });
 
       // Ocultar o campo de data de cadastro e desmarcar o checkbox cliente se o checkbox usuário for clicado
-      document
-        .getElementById("userTypeUser")
-        .addEventListener("change", function () {
-          if (this.checked) {
-            document.getElementById("dataCadastro").style.display = "none";
-            document.getElementById("userTypeClient").checked = false;
-          }
-        });
+      document.getElementById("userTypeUser").addEventListener("change", function () {
+        if (this.checked) {
+          document.getElementById("dataCadastro").style.display = "none";
+          document.getElementById("userTypeClient").checked = false;
+        }
+      });
     </script>
 
     <!-- Modal Bootstrap -->

@@ -1,4 +1,4 @@
-const User = require('../models/LoginModel'); // Importa o modelo de login 
+const User = require("../models/LoginModel"); // Importa o modelo de login
 
 const updateProfileImage = async (req, res) => {
   const { userId, image } = req.body;
@@ -15,10 +15,10 @@ const updateProfileImage = async (req, res) => {
       return res.status(404).json({ error: "Usuário não encontrado" });
     }
 
-    res.status(200).json({ message: 'Imagem carregada com sucesso', user });
+    res.status(200).json({ message: "Imagem carregada com sucesso", user });
   } catch (error) {
-    console.error('Erro ao atualizar imagem:', error);
-    res.status(500).json({ error: 'Erro ao atualizar imagem' });
+    console.error("Erro ao atualizar imagem:", error);
+    res.status(500).json({ error: "Erro ao atualizar imagem" });
   }
 };
 

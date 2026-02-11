@@ -340,8 +340,6 @@ h6 {
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
   background-color: #fff;
   padding-left: 20px;
-  /* Toggle Sidebar Button */
-  /* Search Bar */
 }
 
 .header .toggle-sidebar-btn {
@@ -418,7 +416,7 @@ h6 {
   list-style: none;
 }
 
-.header-nav>ul {
+.header-nav > ul {
   margin: 0;
   padding: 0;
 }
@@ -587,7 +585,6 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-
   #main,
   #footer {
     margin-left: 300px;
@@ -601,7 +598,6 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-
   .toggle-sidebar #main,
   .toggle-sidebar #footer {
     margin-left: 0;
@@ -840,7 +836,7 @@ h6 {
 }
 
 /* News & Updates */
-.dashboard .news .post-item+.post-item {
+.dashboard .news .post-item + .post-item {
   margin-top: 15px;
 }
 
@@ -998,7 +994,6 @@ h6 {
 /* Fonte Modal */
 #exampleModalLabel {
   font-weight: 800;
-
 }
 
 /* Texto Receita Home-Page H6 */
@@ -1008,22 +1003,21 @@ h6 {
 
 /* Foto perfil */
 .uploadPhoto-container {
-  display: flex;               /* Usando flexbox */
-  align-items: center;        /* Alinha verticalmente os itens ao centro */
-  gap: 10px;                  /* Espaçamento entre os itens */
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .file-input {
-  display: inline-block;       /* Para garantir que o botão de arquivo apareça corretamente */
-  width: 280px; /* Define a largura */
-  height: 42px; /* Define a altura */
-  font-size: 12px; /* Tamanho da fonte do texto */
+  display: inline-block; /* Para garantir que o botão de arquivo apareça corretamente */
+  width: 280px;
+  height: 42px;
+  font-size: 12px;
 }
 
 .upload-button {
-  background-color: #2806e9; /* Cor de fundo */
-  color: white;               /* Cor do texto */
-  cursor: pointer;            /* Cursor de ponteiro ao passar o mouse */
+  background-color: #2806e9;
+  color: white;
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
   margin-bottom: 20px;
 }
-

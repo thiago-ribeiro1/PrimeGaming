@@ -32,16 +32,14 @@ function updateHomePage(user) {
     position: "right", // `left`, `center` or `right`
     stopOnFocus: true, // Prevents dismissing of toast on hover
     offset: {
-      x: 0, // Distância da borda lateral 
-      y: 46  // Distância do topo 
+      x: 0, // Distância da borda lateral
+      y: 46 // Distância do topo
     },
     style: {
-      background: "linear-gradient(to right, #0073e6, #00c6ff)",
+      background: "linear-gradient(to right, #0073e6, #00c6ff)"
     },
-    onClick: function(){} // Callback after click
+    onClick: function () {} // Callback after click
   }).showToast();
-
-  
 }
 
 async function botaoComprarCliente(productName) {
@@ -94,18 +92,16 @@ async function botaoComprarCliente(productName) {
       msgAtividadesRecentes = `${usuarioLogado.name} comprou ${product.name}`;
 
       // Adicionar a mensagem de atividade ao Redis
-      fetch('/api/atividades', {
-        method: 'POST',
+      fetch("/api/atividades", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json', // corpo da mensagem será em JSON
+          "Content-Type": "application/json" // corpo da mensagem será em JSON
         },
-        body: JSON.stringify({ msgAtividadesRecentes }), // converte o objeto contendo a mensagem de atividades recentes em uma string JSON
+        body: JSON.stringify({ msgAtividadesRecentes }) // converte o objeto contendo a mensagem de atividades recentes em uma string JSON
       })
-      .then(response => response.json())  // Quando a resposta for recebida, convertê-la para JSON
-      .then(data => console.log('Atividade salva:', data)) // Exibir no console uma mensagem de sucesso 
-      .catch(error => console.error('Erro ao salvar atividade:', error));
-
-
+        .then((response) => response.json()) // Quando a resposta for recebida, convertê-la para JSON
+        .then((data) => console.log("Atividade salva:", data)) // Exibir no console uma mensagem de sucesso
+        .catch((error) => console.error("Erro ao salvar atividade:", error));
     } else {
       showModal("Produto não encontrado ou usuário não encontrado");
     }
@@ -115,17 +111,15 @@ async function botaoComprarCliente(productName) {
   }
 }
 
-// Função para atualizar a interface da página de perfil e a imagem de perfil 
+// Função para atualizar a interface da página de perfil e a imagem de perfil
 function updateUserProfile(user) {
   // Atualizar a imagem de perfil na navbar
   const profileImageElements = document.querySelectorAll(".nav-profile img");
-  
+
   // Atualiza a imagem de perfil em todas as instâncias na navegação
   profileImageElements.forEach((imgElement) => {
-      imgElement.src = user.profileImage || '../img/profile-img.jpg'; // Usar uma imagem padrão se não houver
+    imgElement.src = user.profileImage || "../img/profile-img.jpg"; // Usar uma imagem padrão se não houver
   });
-
-  
 
   // Atualizar a interface da página de perfil
   const profileNameElement = document.getElementById("profileName");
@@ -136,7 +130,7 @@ function updateUserProfile(user) {
   // Atualizar o HTML da interface
   profileNameElement.innerHTML = `
       <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-          <img src="${user.profileImage || '../img/profile-img.jpg'}" alt="Profile" class="rounded-circle">
+          <img src="${user.profileImage || "../img/profile-img.jpg"}" alt="Profile" class="rounded-circle">
           <h2>${user.name}</h2>
       </div>
   `;
@@ -144,8 +138,6 @@ function updateUserProfile(user) {
   emailElement.textContent = user.email;
   usernameElement.textContent = user.username;
 }
-
-
 
 // Atualizar a interface ao carregar a página
 window.addEventListener("DOMContentLoaded", () => {
@@ -160,66 +152,65 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // Padronizando o caminho removendo barras ou caracteres indesejados
-const normalizedPath = path.toLowerCase().replace(/\\/g, '/');
+  const normalizedPath = path.toLowerCase().replace(/\\/g, "/");
 
-// Atualizar a interface das páginas
-if (normalizedPath.endsWith("src/views/home-page.html")) {
+  // Atualizar a interface das páginas
+  if (normalizedPath.endsWith("src/views/home-page.html")) {
     updateHomePage(usuarioLogado);
     updateUserProfile(usuarioLogado);
-}
+  }
 
-if (normalizedPath.endsWith("src/views/users-profile.html")) {
+  if (normalizedPath.endsWith("src/views/users-profile.html")) {
     updateUserProfile(usuarioLogado);
     updateHomePage(usuarioLogado);
-}
+  }
 
-if (normalizedPath.endsWith("src/views/products.html")) {
+  if (normalizedPath.endsWith("src/views/products.html")) {
     updateHomePage(usuarioLogado);
     updateUserProfile(usuarioLogado);
-}
-
+  }
 });
-
 
 // Manipular imagem de perfil do html
 document.getElementById("uploadImageButton").addEventListener("click", async () => {
   const fileInput = document.getElementById("profileImage"); // Obtém o elemento de input do arquivo onde o usuário seleciona a imagem
   const file = fileInput.files[0];
-  
-  if (file) { // se houver alguma imagem arquivo
+
+  if (file) {
+    // se houver alguma imagem arquivo
     const reader = new FileReader();
     reader.onloadend = async () => {
       const base64String = reader.result; // String Base64 da imagem
       const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-      
+
       // Atualizar a imagem do perfil no MongoDB
-      await fetch('/api/users/updateProfileImage', {
-        method: 'POST',
+      await fetch("/api/users/updateProfileImage", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           userId: usuarioLogado._id, // Assumindo que o ID do usuário está armazenado
           image: base64String // Imagem como string Base64
-        }),
+        })
       })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Erro ao atualizar a imagem"); // Lança um erro se a resposta não for OK
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Imagem do perfil atualizada:', data);
-        
-        // Atualizar o localStorage com a nova imagem
-        usuarioLogado.profileImage = base64String; // Atualiza a imagem no objeto do usuário
-        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado)); // Salva no localStorage
-        
-        // Atualizar a interface se necessário
-        updateUserProfile({ ...usuarioLogado, profileImage: base64String });
-      })
-      .catch(error => console.error('Erro ao atualizar imagem:', error));
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erro ao atualizar a imagem"); // Lança um erro se a resposta não for OK
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Imagem do perfil atualizada:", data);
+
+          // Atualizar o localStorage com a nova imagem
+          usuarioLogado.profileImage = base64String; // Atualiza a imagem no objeto do usuário
+          localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado)); // Salva no localStorage
+
+          // Atualizar a interface se necessário
+          updateUserProfile({ ...usuarioLogado, profileImage: base64String });
+        })
+        .catch((error) => console.error("Erro ao atualizar imagem:", error));
     };
     reader.readAsDataURL(file); // Converte a imagem para Base64
   } else {
@@ -228,9 +219,9 @@ document.getElementById("uploadImageButton").addEventListener("click", async () 
 });
 
 // Atualiza a imagem de perfil ao carregar a página
-document.addEventListener('DOMContentLoaded', function() {
-  const user = JSON.parse(localStorage.getItem('currentUser')); // Obtém o usuário do localStorage
+document.addEventListener("DOMContentLoaded", function () {
+  const user = JSON.parse(localStorage.getItem("currentUser")); // Obtém o usuário do localStorage
   if (user) {
-      updateUserProfile(user); // Chama a função para atualizar a interface e a imagem
+    updateUserProfile(user); // Chama a função para atualizar a interface e a imagem
   }
 });
